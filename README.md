@@ -1,12 +1,12 @@
 
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Ruby_tic-tac-toe
+# Ruby_tic-tac-toe Rspec test
 
-> This is the readMe for the Tic tac toe game Rspect test. 
+> This is the readMe for the Tic tac toe game Rspec test. 
 
 
-![screenshot](./image/screen.gif)
+![screenshot]()
 
 Additional description about the project and its features.
 
@@ -17,7 +17,7 @@ Additional description about the project and its features.
 
 ## Test
 - in order to run test you have to install rspec in your cmd run $gem install rspec
--run test by cd into spec file and use the command      rspec /test.rb
+- run test by cd into spec file and use the command   ```rspec rspec_game_logic.rb```   
 ## Built With
 
 - Ruby-tictactoe Methods
@@ -41,15 +41,13 @@ Additional description about the project and its features.
 - LinkedIn: [MandeIn](https://linkedin.com/MandeIn)
 
 👤 **Author2**
-- GitHub: [@Elyor Doniyorov](https://github.com/EL28DEV)
-- LinkedIn: [Elyor](https://www.linkedin.com/feed/)
-- Twitter: [@Elyor Doniyorov](https://twitter.com/home?lang=ru)
+- GitHub: [@githubhandle](https://github.com/@uwadonat)
+- Twitter: [@twitterhandle](https://twitter.com/@uwamahoroDonat)
+- LinkedIn: [LinkedIn](https://linkedin.com/in/uwamahoro-donat-84b5bb1b7/)
 
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
-
-Feel free to check the [issues](https://github.com/ashraffares/bubble/issues).
 
 ## Show your support
 
