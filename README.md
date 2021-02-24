@@ -28,9 +28,8 @@ Additional description about the project and its features.
 - To get a local copy up and running follow these simple example steps.
 
 - Clone this repository with git clone ```https://github.com/Mandeln/Tic-Tac-Toe-Test/tree/test``` using your terminal or command line.
-- Change to the project directory by entering :
-```cd Ruby_tic-tac-toe``` in the terminal.
-- run the command ```bin/main```
+- run the command ```cd bin``` to Change the directory 
+- run the command ```ruby main``` and enjoy the game
 
 
 ## Authors
