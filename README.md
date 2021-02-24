@@ -1,7 +1,7 @@
 
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Ruby_tic-tac-toe Rspec test
+# Tic-tac-toe Rspec test
 
 > This is the readMe for the Tic tac toe game Rspec test. 
 
@@ -25,7 +25,7 @@ Additional description about the project and its features.
 
 ## Run Program
 
-- To get a local copy up and running follow these simple example steps.
+- To get a local copy up and running the game follow these simple example steps:
 
 - Clone this repository with git clone ```https://github.com/Mandeln/Tic-Tac-Toe-Test/tree/test``` using your terminal or command line.
 - run the command ```cd bin``` to Change the directory 
