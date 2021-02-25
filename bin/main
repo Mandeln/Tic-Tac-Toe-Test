@@ -1,0 +1,91 @@
+require_relative '../lib/game_logic'
+require_relative '../lib/display'
+
+def start_playing
+  puts 'Choose one of the symbols: X or O'
+  choose_symbol = gets.chomp
+  symbols = %w[X O]
+  if !symbols.include?(choose_symbol.upcase)
+    puts 'Conflicting symbol, please try again'
+    puts
+    start_playing
+  else
+    choose_symbol.upcase
+  end
+end
+
+puts 'First player is ready!'
+
+display = Display.new
+player_one = start_playing
+player_two = display.get_players(player_one)
+
+puts
+puts "1st Player has the sign #{player_one}"
+puts "2nd Player has the sign #{player_two}"
+puts
+
+game = Logic.new(player_one, player_two)
+board = display.make_board
+player_one_turn = true
+game_status = false
+
+def invalid_entry(board, movement, game)
+  if !game.numeric?(movement)
+    true
+  else
+    movement = Integer(movement)
+    if (movement > 9 or movement < 1) || game.check_if_filled(board, movement)
+      true
+    else
+      false
+    end
+  end
+end
+
+def display_board(board)
+  board.each do |x|
+    puts "#{x[0]} | #{x[1]} | #{x[2]}"
+    puts '----------' if x != board[2]
+  end
+end
+
+loop do
+  if player_one_turn
+    puts '1st Player, please enter a move'
+  else
+    puts '2nd Player, please enter a move'
+  end
+  player_one_turn = !player_one_turn
+
+  display_board(board)
+
+  print 'Make a move: '
+  movement = gets.chomp
+  puts
+
+  if invalid_entry(board, movement, game)
+    puts 'Invalid entry, please try again'
+    player_one_turn = !player_one_turn
+    puts
+    next
+  else
+    movement = Integer(movement)
+  end
+  game_status, board = game.player_won(board, movement, !player_one_turn)
+  next unless game_status
+
+  display_board(board)
+  puts
+  puts 'The End!'
+  if game.check_win(board)
+    if !player_one_turn
+      puts '1st Player won!'
+    else
+      puts '2nd Player won!'
+    end
+  elsif game.check_draw(board)
+    puts "Cat's game"
+  end
+  break
+end
