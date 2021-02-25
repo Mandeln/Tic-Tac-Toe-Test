@@ -1,6 +1,5 @@
 require_relative '../lib/display'
 
-
 RSpec.describe Display do
   let(:display) { Display.new }
 

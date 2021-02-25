@@ -56,7 +56,6 @@ RSpec.describe Logic do
     it 'Doesnt return false if theres a win combination' do
       expect(game_logic.check_win(test_win)).not_to eql(false)
     end
-
   end
 
   describe '#check_status' do
