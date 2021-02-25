@@ -1,19 +1,27 @@
 require_relative '../lib/game_logic'
 
-game_logic = Logic.new('X', 'O') 
-test_draw = [%w[X O X], %w[O X X], %w[O X O]]
-test_unfinished = [%w[X O X], ['O', 5, 'X'], ['O', 'X', 9]]
-test_win = [%w[X O X], %w[O X X], %w[O X X]]
-test_winingmove = [%w[X O X], %w[O X X], ['O', 'X', 9]]
-test_drawingmove = [%w[X O X], %w[O X X], ['O', 'X', 9]]
+RSpec.describe Logic do
+  let(:game_logic) { Logic.new('X', 'O') }
+  let(:test_draw) { [%w[X O X], %w[O X X], %w[O X O]] }
+  let(:test_unfinished) { [%w[X O X], ['O', 5, 'X'], ['O', 'X', 9]] }
+  let(:test_win) { [%w[X O X], %w[O X X], %w[O O X]] }
+  let(:test_winingmove) { [%w[X O X], %w[O X X], ['O', 'X', 9]] }
+  let(:test_drawingmove) { [%w[X O X], %w[O X X], ['O', 'X', 9]] }
 
-RSpec.describe game_logic do
   describe '#numeric?' do
     it 'Returns true if the entered number is an integer' do
       expect(game_logic.numeric?(1)).to eql(true)
     end
 
     it 'Returns false for anything else thats not an Integer' do
+      expect(game_logic.numeric?('Pepeissmol')).to eql(false)
+    end
+
+    it 'Doesnt return false if the entered number is an integer' do
+      expect(game_logic.numeric?(1)).not_to eql(false)
+    end
+
+    it 'Doesnt return true for anything else thats not an Integer' do
       expect(game_logic.numeric?('Pepeissmol')).not_to eql(true)
     end
   end
@@ -26,6 +34,14 @@ RSpec.describe game_logic do
     it 'Returns false when the whole board is not filled' do
       expect(game_logic.check_draw(test_unfinished)).to eql(false)
     end
+
+    it 'Doesnt return false when the whole board if full' do
+      expect(game_logic.check_draw(test_draw)).not_to eql(false)
+    end
+
+    it 'Doesnt return true when the whole board is not filled' do
+      expect(game_logic.check_draw(test_unfinished)).not_to eql(true)
+    end
   end
 
   describe '#check_win' do
@@ -37,9 +53,10 @@ RSpec.describe game_logic do
       expect(game_logic.check_win(test_win)).to eql(true)
     end
 
-    it 'Returns false if theres no win combination' do
+    it 'Doesnt return false if theres a win combination' do
       expect(game_logic.check_win(test_win)).not_to eql(false)
     end
+
   end
 
   describe '#check_status' do
@@ -52,7 +69,15 @@ RSpec.describe game_logic do
     end
 
     it 'Returns false if the array entered is unfinished' do
-      expect(game_logic.check_status(test_unfinished)).to eql(false)
+      expect(game_logic.check_status(test_unfinished)).not_to eql(true)
+    end
+
+    it 'Doesnt return false if the array entered is a draw' do
+      expect(game_logic.check_status(test_draw)).not_to eql(false)
+    end
+
+    it 'Doesnt return false if the array entered is a win' do
+      expect(game_logic.check_status(test_win)).not_to eql(false)
     end
   end
 
@@ -66,7 +91,7 @@ RSpec.describe game_logic do
         expect(game_logic.check_if_filled(test_unfinished, 1)).to eql(true)
       end
       it 'Returns false if the position is not filled' do
-        expect(game_logic.check_if_filled(test_unfinished, 5)).to eql(false)
+        expect(game_logic.check_if_filled(test_unfinished, 5)).not_to eql(true)
       end
     end
 
