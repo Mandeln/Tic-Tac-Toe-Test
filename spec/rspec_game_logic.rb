@@ -1,6 +1,6 @@
 require_relative '../lib/game_logic'
 
-game_logic = Logic.new('X', 'O')
+game_logic = Logic.new('X', 'O') 
 test_draw = [%w[X O X], %w[O X X], %w[O X O]]
 test_unfinished = [%w[X O X], ['O', 5, 'X'], ['O', 'X', 9]]
 test_win = [%w[X O X], %w[O X X], %w[O X X]]
@@ -14,7 +14,7 @@ RSpec.describe game_logic do
     end
 
     it 'Returns false for anything else thats not an Integer' do
-      expect(game_logic.numeric?('Pepeissmol')).to eql(false)
+      expect(game_logic.numeric?('Pepeissmol')).not_to eql(true)
     end
   end
 

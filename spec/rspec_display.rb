@@ -1,6 +1,6 @@
 require_relative '../lib/display'
 
-display = Display.new
+let(:display) { Display.new }
 
 RSpec.describe Display do
   describe '#make_board' do
