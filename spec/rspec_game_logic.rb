@@ -86,11 +86,24 @@ RSpec.describe Logic do
       expect(game_logic.player_won(test_winingmove, nil, true)).to eql(true)
     end
 
+    it 'Doesnt return false if move is nil' do
+      expect(game_logic.player_won(test_winingmove, nil, true)).not_to eql(false)
+    end
+
     describe 'check_if_filled' do
       it 'Returns true if the position is filled' do
         expect(game_logic.check_if_filled(test_unfinished, 1)).to eql(true)
       end
+
       it 'Returns false if the position is not filled' do
+        expect(game_logic.check_if_filled(test_unfinished, 5)).to eql(false)
+      end
+
+      it 'Doesnt return false if the position is filled' do
+        expect(game_logic.check_if_filled(test_unfinished, 1)).not_to eql(false)
+      end
+
+      it 'Doesnt return true if the position is not filled' do
         expect(game_logic.check_if_filled(test_unfinished, 5)).not_to eql(true)
       end
     end
